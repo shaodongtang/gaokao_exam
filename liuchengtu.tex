@@ -1,0 +1,56 @@
+%天津大学仁爱学院14管理系金融工程-唐绍东
+%2017高考全国3卷理科数学流程图
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta}
+\usepackage{xeCJK}%\usepackage{ctex}
+\setCJKmainfont{FZShuSong-Z01S}%方正书宋简体
+\usepackage{amsmath}
+\everymath{\displaystyle}
+\usepackage{unicode-math}
+\setmainfont{XITS}
+\setmathfont{XITS Math}
+\begin{document}
+% 流程图定义基本形状
+\tikzstyle{ellipse}=[draw, rectangle, minimum width=2.8em, rounded corners=6pt,line width=0.5pt]% minimum height=1.5em, fill=red!20
+\tikzstyle{pxsbx}=[trapezium, trapezium left angle=75, trapezium right angle=105, minimum width=3em, text centered, draw = black, fill=white,line width=0.5pt]
+\tikzstyle{lingxing}=[draw,diamond,shape aspect=3,inner sep = 0.4pt,thick,font=\itshape,line width=0.5pt]%,minimum size=8mm
+\begin{tikzpicture}[node distance=1.2cm]
+%定义流程图具体形状
+\node (start) [ellipse,inner sep=1.5pt] {开始};
+\node (srn) [pxsbx, below of=start,node distance=1.0cm,inner sep=1.5pt] {输入$\!N$};
+\node (yizhi) [minimum height=0cm,draw, below of=srn,node distance=1.0cm,inner sep=2pt] {$t=1$, $M=100$, $S=0$};
+\node (tiaojian) [lingxing,draw, below of=yizhi,inner sep=1.5pt] {$t\leqslant N$};
+\node (shi) [minimum height=0cm,draw, below of=tiaojian,inner sep=2pt] {$S=S+M$};
+\node (fuzhi1) [minimum height=0cm,draw, below of=shi,inner sep=2pt] {$M=-\dfrac{M}{10}$};
+\node (fuzhi2) [minimum height=0cm,draw, below of=fuzhi1,inner sep=2pt] {$t=t+1$};
+\node (fou) [right of=tiaojian,xshift=1cm,coordinate]  {}; 
+\node (shuchus) [below of=fou,draw,pxsbx,inner sep=1.5pt,node distance=1.0cm]  {输出$\!S$}; 
+\node (end) [below of=shuchus,draw,ellipse,inner sep=1.5pt,node distance=1.0cm]  {结束}; 
+%连接具体形状
+\draw[arrows={-Stealth[scale=0.8]}](start) -- (srn);
+\draw[arrows={-Stealth[scale=0.8]}](srn) -- (yizhi) ;
+\path (yizhi) -- (tiaojian) coordinate[pos=0.5](yt);
+\node [left of=yt,coordinate,node distance=2.3cm] (c1)  {}; 
+\draw[arrows={-Stealth[scale=0.8]}](yizhi) -- (tiaojian);
+\draw[arrows={-Stealth[scale=0.8]}](tiaojian) -- node[right=-0.5mm,blue]{是}(shi);
+\draw[arrows={-Stealth[scale=0.8]}](shi) -- (fuzhi1);
+\draw[arrows={-Stealth[scale=0.8]}](fuzhi1)--(fuzhi2);
+\draw[arrows={Stealth[scale=0.8]-}](yt)--(c1);
+\draw(c1)|- (fuzhi2);
+\draw(tiaojian)-- node[midway,above=-1mm,blue]{否}(fou);
+\draw[arrows={-Stealth[scale=0.8]}](fou)--(shuchus);
+\draw[arrows={-Stealth[scale=0.8]}](shuchus)--(end);
+\end{tikzpicture}
+\end{document}
+              
+              
+
+
+
+
+
+
+
+
+
