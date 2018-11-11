@@ -1,0 +1,215 @@
+\ProvidesPackage{GEEexam}[2017/09/27 v1.0 Non-standard LaTeX package]
+%\documentclass[11pt,space]{ctexart}
+%\usepackage{GEEexam}
+
+%------------------------------- 大题 ----------------------------------%
+\ctexset{section = {name = {,、\hspace*{-5mm}},number = \chinese{section},format = {\zihao{5}\heiti\raggedright}}}
+\ctexset{subsection = {name = {\hspace{5mm},\hspace*{-1mm}},number = (\chinese{subsection}),format = {\zihao{5}\heiti\raggedright}}}
+\RequirePackage{titlesec}%titlesec宏包调整section与正文间距
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+%------------------------------- 大题 ----------------------------------%
+
+
+%------------------------------ 选择题 ----------------------------------%
+\usepackage{tasks}%选择题宏包，tasks环境
+\settasks{counter-format={tsk[A].},
+	          label-offset={0.4em},
+                label-align=left,
+                column-sep={2pt},
+                item-indent={1pt},before-skip={-0.7em},after-skip={-0.7em}}
+% 选择题示例 
+%\begin{tasks}(4)
+%	\task 
+%	\task 
+%	\task 
+%	\task 
+%\end{tasks}
+%------------------------------ 选择题 ----------------------------------%
+%\setcounter{enumi}{12}
+
+\def\blank{\underline{\hspace{2.5cm}}}
+
+%%%----------数学类---------%%%
+%=======================================================================
+\RequirePackage{amsmath,amssymb}%
+\everymath{\displaystyle}
+\def\dif{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator{\rank}{rank}
+%\RequirePackage{bm}
+\RequirePackage{pifont}
+\RequirePackage{mathabx}%\usepackage{fourier}一个积分符号宏包
+\RequirePackage{extarrows} %长等号
+\RequirePackage[fourier]{varint}
+\RequirePackage{scalerel}%缩放公式大小
+%%--------------------------------求和符号--------------------------------------%%
+%\setmathfont{Cambria Math}
+%\setmathfontface\mathitbf{xits-bolditalic.otf}
+%%--------------------------设置数学字体为新罗马字体----------------------------
+%%---------------------------------- 定理\引理\定义样式设置 ------------------------------------%%
+\RequirePackage{amsthm}
+\renewcommand{\proofname}{\heiti{证明}}
+%\newenvironment{proof}{\par\noindent{\heiti{证明.\,}}}{\hspace*{\fill}{$\Box$}\par}
+%\newenvironment{proof}{\par\noindent{\heiti{证明.\,}}\small}{\hfill$\Box$\quad\par}
+\newenvironment{Proof}{\par\noindent{\heiti{证明.\,}}\small}{\hfill$\Box$\quad\par}
+\newenvironment{Solution}{\par\noindent{\heiti{解.\,}}}{\hspace*{\fill}{$\Diamond$}\par}
+%-----------------------------------------------------------------------------
+%\RequirePackage{amsthm}
+\RequirePackage{thmtools}
+\declaretheoremstyle[
+spaceabove=0pt, spacebelow=0pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+headindent=0em,
+headpunct={:},
+qed=$\blacktriangleleft$,
+numbered=no
+]{solstyle}
+\declaretheorem[style=solstyle,shaded={rulecolor=red,
+rulewidth=0.5pt, bgcolor={rgb}{1,1,1}},name=解]{solution}
+%-----------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------
+
+%-----------------------------------------------字体设置-----------------------------------------------------%
+%---------------------------------数学字体设置----------------------------------%
+%\usepackage{mathspec}
+%\setmainfont{Times New Roman}
+%\setmathsfont{Times New Roman}
+%\usepackage{unicode-math}
+%\setmainfont{XITS}
+%\setmathfont{XITS Math}
+%%--------------------------------求和符号--------------------------------------%%
+%\DeclareSymbolFont{cmlargesymbols}{OMX}{cmex}{m}{n}
+%\let\sumop\relax
+%\DeclareMathSymbol{\sum}{\mathop}{cmlargesymbols}{"50}
+%%--------------------------------求和符号--------------------------------------%%
+%\setmathfont{Cambria Math}
+%\setmathfontface\mathitbf{xits-bolditalic.otf}
+%%--------------------------设置数学字体为新罗马字体----------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx}
+%\RequirePackage{fontenc}
+%\setmainfont{Times New Roman}
+%\RequirePackage{fontspec}
+%\fontspec[BoldFont=STIX-Bold.otf,ItalicFont=STIX-Italic.otf,BoldItalicFont=STIX-BoldItalic.otf]{STIX-Regular.otf}
+%%-----------------------------------------------------------------------------
+%-------------------------------------中文字体设置------------------------------------------%
+\RequirePackage{xeCJK}
+\setCJKmainfont[BoldFont={FZXiaoBiaoSong-B05S}, ItalicFont={FZKai-Z03S}]
+                         {FZShuSong-Z01S} % 书宋、小标宋、楷体
+\setCJKsansfont[BoldFont={FZHei-B01S}]{FZXiHei I-Z08S} % 方正细黑、黑体
+\renewcommand{\heiti}{\CJKfontspec{FZHei-B01S}}%方正黑体
+\def\xihei{\CJKfontspec{FZXiHei I-Z08S}}%方正细黑
+\def\hwzsong{\CJKfontspec{STZhongsong}}%方正中宋
+\def\zhongsong{\CJKfontspec{方正中宋简体}}%方正中宋
+\def\shusong{\CJKfontspec{FZShuSong-Z01S}}%方正书宋
+\def\xbsong{\CJKfontspec{FZXiaoBiaoSong-B05S}}%方正小标宋
+\renewcommand{\fangsong}{\CJKfontspec{FZFangSong-Z02S}}%方正仿宋简体
+\renewcommand{\kaishu}{\CJKfontspec{FZKai-Z03S}}%方正楷体
+\def\xingkai{\CJKfontspec{STXingkai}}%华文行楷
+%\def\xingkai{\CJKfontspec{FZXingKai-S04S}}%方正行楷
+%========================================================================================
+%\usepackage{times}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\ttdefault}{pcr}
+\def\bfit#1{\textbf{\textit{#1}}}%粗斜体字母
+\def\bfbm#1{\textbf{\textbm{#1}}}%粗罗马体字母
+
+
+%%--------------- 页面设置 ---------------%%
+\RequirePackage{geometry,calc}
+\geometry{a3paper,twocolumn,landscape,hmargin={3.5cm,1.3cm},vmargin={1.5cm,1.5cm},footskip=0.75cm,headsep=0.25cm}
+
+%--------------------原--------------------------------
+%\RequirePackage{geometry}
+%\geometry{paperwidth=19.5cm,paperheight=27cm,headsep=10pt,top=1.5cm,bottom=3cm,left=1.5cm,right=2cm}
+%\oddsidemargin=1cm   %奇数页页边距
+%\evensidemargin=-0.6cm %偶数页页边距
+%-----------------------------------------------------
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------页眉页脚-%-装订线----------------------------------------%
+%\makeatletter
+\def\lastfox@putlabel{%
+	\immediate\write\@auxout{%
+		\string\newlabel{LastFox}{{\@arabic\c@fox}{}{}{}{}}}}
+\AtEndDocument{\lastfox@putlabel}
+%\makeatother
+\newcounter{foo}
+\newcounter{fox}
+\addtocounter{foo}{1}
+%--------------------------------------------------------------------------------------
+\newlength{\Lzdx}\setlength{\Lzdx}{10.2cm}
+\RequirePackage{tikz}
+\usetikzlibrary{circuits} %circuit handle symbol
+\RequirePackage{lastpage}
+\RequirePackage{dashrule}%使用虚线宏包
+\def\cfsxian#1{\hspace*{\fill}\raisebox{-1.1ex}{\tikz\draw[line width=1pt,dash pattern=on 1pt off 2pt on 1pt off 2pt] (0pt,0pt)--(5cm,0pt)node[right=-1mm]{(#1~分)};}\\}
+\def\dfsxian#1{\hspace*{\fill}\raisebox{-1.1ex}{\tikz\draw[line width=1pt,dash pattern=on 1pt off 2pt on 1pt off 2pt] (0pt,0pt)--(3cm,0pt)node[right=-1mm]{(#1~分)};}\\}
+\def\fsxian#1#2{\hspace*{\fill}\raisebox{-1.1ex}{\tikz\draw[line width=1pt,dash pattern=on 1pt off 2pt on 1pt off 2pt] (0pt,0pt)--(#1cm,0pt)node[right=-1mm]{(#2~分)};}\\}
+\RequirePackage{calc}%使用四则运算宏包%\usepackage{ulem}%画线的宏包
+\RequirePackage{fancyhdr}%使用页眉页脚宏包
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\columnseprule}{0.4pt}
+\setlength{\columnsep}{1.5cm}
+%\fancyfoot[CO]{\vspace*{1mm}\hspace*{1.5cm}理科数学试题\quad 第\,\thepage\,页 \quad (共\pageref{LastPage}页)}
+%\fancyfoot[CE]{\vspace*{1mm}理科数学试题\quad 第\,\thepage\,页 \quad (共\pageref{LastPage}页)}
+\fancyfoot[CE,CO]{\kaishu{}理科数学试题\quad 第\refstepcounter{fox}\thefoo\refstepcounter{foo}页 \quad (共~\ref{LastFox}~页)\hspace*{13cm}
+                           理科数学试题\quad 第\refstepcounter{fox}\thefoo\refstepcounter{foo}页 \quad (共~\ref{LastFox}~页)}
+\renewcommand{\headrulewidth}{0pt}
+%-------------------------------------------------------------------------------------------------
+
+
+
+
+\RequirePackage{graphicx} %插图
+\RequirePackage{wrapfig}
+\RequirePackage{eso-pic}
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill%
+\centering%
+\tikz[remember picture, overlay]%
+\node [rotate = #1, scale = #2] at (current page.center)%
+{\textcolor{gray!80!cyan!30}{#3}};
+\vfill}}}
+
+%\watermark{60}{6}{14-金融工程-白兔兔}
+%-------------------表格-------------------%
+\RequirePackage{array}%m{3em}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+%--------------------------------------
+
+%=======================================================================
+\RequirePackage{color,xcolor}%-颜色-%
+%==============================================================================
+
+
+\RequirePackage{enumitem,enumitem}
+
+\def\juemi{\noindent{\heiti\zihao{-4} 绝密$\bigstar$启用前}}
+\def\biaoti#1{\begin{center}{\zihao{3} #1}\end{center}}
+\def\fubiaoti#1{\begin{center}{\zihao{2}\heiti #1}\end{center}}
+
+%\RequirePackage{indentfirst}
+
+
+%\RequirePackage{placeins}%防浮动的
+
+
+
+
+
+
+%-\raisebox{-3.2ex}{}
+
+
+\endinput
+
