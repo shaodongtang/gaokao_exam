@@ -6,5 +6,5 @@
 
 #### GEEexam使用说明
 
-1. GEEexam.sty(有分栏线) 例子见 17quanguo3.tex
-2. NEMT.sty(无分栏线) 例子见 2017quanguo3.tex
+1. GEEexam.sty(有分栏线) 示例 17quanguo3.tex
+2. NEMT.sty(无分栏线) 示例 2017quanguo3.tex
